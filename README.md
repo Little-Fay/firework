@@ -36,9 +36,9 @@
 
 - [haodong108/fireworks-2023](https://gitee.com/haodong108/fireworks-2023 "haodong108/fireworks-2023")
 
-## 最便宜的VPN
+## 目的
 
-[https://nianbroken.github.io/Great-Firewall/](https://nianbroken.github.io/Great-Firewall/ "https://nianbroken.github.io/Great-Firewall/")
+仅用于娱乐和学习，不用于商业！
 
 ## 其他
 
