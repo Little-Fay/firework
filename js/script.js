@@ -5,7 +5,7 @@ Github：https://github.com/Little-Fay/firework
 简而言之，你可以自由使用、修改和分享本项目的代码，但前提是在其衍生作品中必须保留原始许可证和版权信息，并且必须以相同的许可证发布所有修改过的代码。
 */
 
-"use strict";
+"use strict"; //严格模式，使得代码更加规范
 
 //这是一个从简单项目开始的典型例子
 //并且雪球远远超出了它的预期大小。有点笨重
@@ -77,7 +77,7 @@ const mainStage = new Stage("main-canvas");
 const stages = [trailsStage, mainStage];
 
 //随机文字烟花内容
-const randomWords = ["新年快乐", "天天开心", "我♥艳", "平安顺遂", "❄"];
+const randomWords = ["新年快乐", "天天开心", "喜欢你❥", "平安顺遂", "❄"];
 const wordDotsMap = {};
 randomWords.forEach((word) => {
 	wordDotsMap[word] = MyMath.literalLattice(word, 3, "Gabriola,华文琥珀", "60px");
@@ -789,7 +789,7 @@ function shellFromConfig(size) {
 	return shellTypes[shellNameSelector()](size);
 }
 
-//获取随机外壳，不包括处理密集型变体
+//获取随机外壳，不包括处理密集型变体，即快速烟花不会被随机选择到
 //注意，只有在配置中选择了“随机”shell时，这才是随机的。
 //还有，这不创建烟花，只返回工厂函数。
 const fastShellBlacklist = ["Falling Leaves", "Floral", "Willow"];
@@ -901,7 +901,7 @@ function getRandomShellSize() {
 		height: fitShellPositionInBoundsV(height),
 	};
 }
-
+// 这个函数是用来从用户指针事件启动一个shell的，基于state.config
 // Launches a shell from a user pointer event, based on state.config
 function launchShellFromConfig(event) {
 	const shell = new Shell(shellFromConfig(shellSizeSelector()));
@@ -911,7 +911,7 @@ function launchShellFromConfig(event) {
 	shell.launch(event ? event.x / w : getRandomShellPositionH(), event ? 1 - event.y / h : getRandomShellPositionV());
 }
 
-// Sequences
+// Sequences序列
 // -----------
 
 //随机生成一个烟花
@@ -1117,9 +1117,9 @@ function startSequence() {
 	}
 }
 
-let activePointerCount = 0;
-let isUpdatingSpeed = false;
-
+let activePointerCount = 0;//活跃的指针数量
+let isUpdatingSpeed = false;//是否正在更新速度
+//处理指针开始事件
 function handlePointerStart(event) {
 	activePointerCount++;
 	const btnSize = 50;
@@ -1147,12 +1147,12 @@ function handlePointerStart(event) {
 		launchShellFromConfig(event);
 	}
 }
-
+//处理指针结束事件
 function handlePointerEnd(event) {
 	activePointerCount--;
 	isUpdatingSpeed = false;
 }
-
+//处理指针移动事件
 function handlePointerMove(event) {
 	if (!isRunning()) return;
 
@@ -1160,7 +1160,7 @@ function handlePointerMove(event) {
 		updateSpeedFromEvent(event);
 	}
 }
-
+//处理键盘按下事件
 function handleKeydown(event) {
 	// P
 	if (event.keyCode === 80) {
@@ -1175,7 +1175,7 @@ function handleKeydown(event) {
 		toggleMenu(false);
 	}
 }
-
+//添加事件监听
 mainStage.addEventListener("pointerstart", handlePointerStart);
 mainStage.addEventListener("pointerend", handlePointerEnd);
 mainStage.addEventListener("pointermove", handlePointerMove);
@@ -1350,7 +1350,7 @@ function update(frameTime, lag) {
 
 	render(speed);
 }
-
+//渲染
 function render(speed) {
 	const { dpr } = mainStage;
 	const width = stageW;
@@ -1622,6 +1622,7 @@ function render(speed) {
 
 // Draw colored overlay based on combined brightness of stars (light up the sky!)
 // Note: this is applied to the canvas container's background-color, so it's behind the particles
+// 这个函数是用来改变背景颜色的
 const currentSkyColor = { r: 0, g: 0, b: 0 };
 const targetSkyColor = { r: 0, g: 0, b: 0 };
 function colorSky(speed) {
@@ -1696,8 +1697,8 @@ function getWordDots(word) {
 	//     res = wordDotsMap[word];
 	// }
 
-	//随机字体大小 60~130//80-150
-	var fontSize = Math.floor(Math.random() * 70 + 80);
+	//随机字体大小 60~130
+	var fontSize = Math.floor(Math.random() * 70 + 60);
 
 	var res = MyMath.literalLattice(word, 3, "Gabriola,华文琥珀", fontSize + "px");
 
