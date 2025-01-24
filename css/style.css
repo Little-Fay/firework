@@ -361,3 +361,33 @@ body {
 	transition-timing-function: ease-out;
 	transition-duration: 0.4s;
 }
+/*定义祝福语的样式*/
+.new-year-message {
+	position: fixed;
+	top: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+	background: rgba(0, 0, 0, 0);
+	backdrop-filter: blur(10px);
+	padding: 15px 30px;
+	border-radius: 15px;
+	color: white;
+	font-size: 20px;
+	font-weight: 700;
+	text-align: center;
+	z-index: 1;
+	opacity: 0;
+	animation: fadeIn 2s ease-out forwards;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateX(-50%) translateY(-20px);
+	}
+
+	to {
+		opacity: 0.5;
+		transform: translateX(-50%) translateY(6px);
+	}
+}
