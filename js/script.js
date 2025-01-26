@@ -151,7 +151,7 @@ const store = {
 			autoLaunch: true, //自动发射烟花
 			finale: true, //同时放更多烟花
 			skyLighting: SKY_LIGHT_NORMAL + "",
-			hideControls: IS_HEADER,
+			hideControls: true,
 			longExposure: false,
 			scaleFactor: getDefaultScaleFactor(),
 		},
@@ -458,6 +458,13 @@ function renderApp(state) {
 		appNodes.helpModalHeader.textContent = header;
 		appNodes.helpModalBody.textContent = body;
 	}
+	
+	// 获取 new-year-message 元素
+    const newYearMessage = document.getElementById("new-year-message");
+    // 根据 menuOpen 状态切换 new-year-message 的显示和隐藏
+    if (newYearMessage) {
+        newYearMessage.classList.toggle("hidden", state.menuOpen);
+    }
 }
 
 store.subscribe(renderApp);
