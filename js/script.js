@@ -77,10 +77,10 @@ const mainStage = new Stage("main-canvas");
 const stages = [trailsStage, mainStage];
 
 //随机文字烟花内容
-const randomWords = ["新年快乐", "天天开心", "喜欢你❥", "平安顺遂", "❄"];
+const randomWords = ["新年快乐", "天天开心", "喜欢你❥", "平安顺遂", "❄", "❤️"];
 const wordDotsMap = {};
 randomWords.forEach((word) => {
-	wordDotsMap[word] = MyMath.literalLattice(word, 3, "Gabriola,华文琥珀", "60px");
+	wordDotsMap[word] = MyMath.literalLattice(word, 6, "Gabriola,华文琥珀", "60px");
 });
 
 // 自定义背景
@@ -458,7 +458,7 @@ function renderApp(state) {
 		appNodes.helpModalHeader.textContent = header;
 		appNodes.helpModalBody.textContent = body;
 	}
-	
+
 	// 获取 new-year-message 元素
     const newYearMessage = document.getElementById("new-year-message");
     // 根据 menuOpen 状态切换 new-year-message 的显示和隐藏
@@ -1079,7 +1079,7 @@ seqSmallBarrage.lastCalled = Date.now();
 const sequences = [seqRandomShell, seqTwoRandom, seqTriple, seqPyramid, seqSmallBarrage];
 
 let isFirstSeq = true;
-const finaleCount = 32;
+const finaleCount = 64;
 let currentFinaleCount = 0;
 //随机生成一个烟花序列
 function startSequence() {
@@ -1101,7 +1101,7 @@ function startSequence() {
 			return 170;
 		} else {
 			currentFinaleCount = 0;
-			return 6000;
+			return 4000;
 		}
 	}
 
