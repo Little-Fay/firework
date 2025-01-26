@@ -379,7 +379,9 @@ body {
 	opacity: 0;
 	animation: fadeIn 2s ease-out forwards;
 }
-
+.new-year-message.hidden {
+    display: none;
+}
 @keyframes fadeIn {
 	from {
 		opacity: 0;
@@ -390,4 +392,13 @@ body {
 		opacity: 0.5;
 		transform: translateX(-50%) translateY(6px);
 	}
+}
+
+/* 针对手机屏幕的媒体查询 */
+@media (max-width: 600px) {
+    .new-year-message {
+        top: 8%; /* 调整顶部位置 */
+        padding: 10px 20px; /* 调整内边距 */
+        font-size: 16px; /* 调整字体大小 */
+    }
 }
